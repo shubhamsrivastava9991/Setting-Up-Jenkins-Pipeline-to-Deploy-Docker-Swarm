@@ -9,17 +9,17 @@ pipeline {
     stage('Build Maven') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shubhamsrivastava9991/Setting-Up-Jenkins-Pipeline-to-Deploy-Docker-Swarm.git']]])
-        bat 'mvn -f C:/Users/hp/.jenkins/workspace/SpringbootDockerSwarmPhase5/SpringbootDockerSwarm/pom.xml clean install'
+        bat 'mvn clean install'
       }
     }
-    stage('Building image') {
+    stage('Building image'){
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
-    stage('Deploy Image') {
+    stage('Deploy Image'){
       steps{
          script {
             docker.withRegistry( '', registryCredential ) {
