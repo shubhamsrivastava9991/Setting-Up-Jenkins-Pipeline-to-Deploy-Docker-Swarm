@@ -1,4 +1,4 @@
 FROM openjdk:11
 EXPOSE 8080
-COPY target/springdockerphase5.jar springdockerphase5.jar
-ENTRYPOINT ["java","-jar","/springdockerphase5.jar"]
+COPY target/springbootdocker.jar springbootdocker.jar
+ENTRYPOINT ["java","-jar","/springbootdocker.jar"]
